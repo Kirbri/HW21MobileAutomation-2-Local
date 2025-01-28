@@ -6,23 +6,23 @@ import io.appium.java_client.AppiumBy;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
-public class UiElements {
+public class UiElementsPage {
 
-    final SelenideElement textButton = $(AppiumBy.accessibilityId("Text Button"));
-    final SelenideElement textInput = $(AppiumBy.accessibilityId("Text Input"));
-    final SelenideElement textOutput = $(AppiumBy.accessibilityId("Text Output"));
+    final SelenideElement textButton = $(AppiumBy.accessibilityId("Text Button")),
+            textInput = $(AppiumBy.accessibilityId("Text Input")),
+            textOutput = $(AppiumBy.accessibilityId("Text Output"));
 
-    public UiElements clickOnButton() {
+    public UiElementsPage clickOnButton() {
         textButton.click();
         return this;
     }
 
-    public UiElements enterText() {
+    public UiElementsPage enterText() {
         textInput.sendKeys("hello@browserstack.com" + "\n");
         return this;
     }
 
-    public UiElements checkText() {
+    public UiElementsPage checkText() {
         textOutput.should(text("hello@browserstack.com"));
         return this;
     }

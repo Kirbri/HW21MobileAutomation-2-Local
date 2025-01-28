@@ -38,7 +38,8 @@ dependencies {
             "io.rest-assured:rest-assured:$restAssuredVersion",
             "org.junit.jupiter:junit-jupiter:$junitVersion",
             "org.slf4j:slf4j-simple:$slf4jVersion",
-            "org.aeonbits.owner:owner:$ownerVersion"
+            "org.aeonbits.owner:owner:$ownerVersion",
+            "commons-io:commons-io:2.18.0",
     )
 }
 
@@ -62,12 +63,19 @@ task android(type: Test) {
     useJUnitPlatform {
         includeTags 'android'
     }
-    systemProperty 'platform', 'android'
+    systemProperty 'android', 'browserstack'
 }
 
 task ios(type: Test) {
     useJUnitPlatform {
         includeTags 'ios'
     }
-    systemProperty 'platform', 'ios'
+    systemProperty 'ios', 'browserstack'
+}
+
+task localAndroid(type: Test) {
+    useJUnitPlatform {
+        includeTags 'local'
+    }
+    systemProperty 'emulation', 'local'
 }
